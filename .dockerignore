@@ -1,0 +1,29 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+docs/
+
+# Datos locales: nunca deben acabar en la imagen
+data/
+
+# Python
+**/__pycache__
+**/*.py[cod]
+**/*.egg-info
+.venv/
+venv/
+.pytest_cache/
+tests/
+
+# Frontend (se instala y compila dentro de la imagen)
+frontend/node_modules/
+frontend/dist/
+frontend/.env*
+!frontend/.env.example
+
+# Editores / SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

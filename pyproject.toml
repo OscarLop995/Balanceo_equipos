@@ -8,10 +8,16 @@ dependencies = [
     "uvicorn[standard]",
 ]
 
+[project.optional-dependencies]
+produccion = [
+    "pyjwt[crypto]>=2.8",
+]
+
 [dependency-groups]
 dev = [
     "pytest>=8.0",
     "httpx",
+    "pyjwt[crypto]>=2.8",
 ]
 
 [build-system]
