@@ -1,0 +1,176 @@
+.selector {
+  margin-top: 22px;
+  max-width: 560px;
+}
+
+.convocatoria {
+  display: grid;
+  gap: 14px;
+}
+
+.titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.paso {
+  font-family: var(--fuente-base);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cancha-600);
+}
+
+.aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radio-m);
+  background: var(--pos-portero-fondo);
+  border: 1px solid #f0dca8;
+  color: #6b4a0f;
+  font-size: 0.9375rem;
+}
+
+.aviso svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.aviso a {
+  font-weight: 600;
+  color: inherit;
+}
+
+.avisoError {
+  background: var(--peligro-fondo);
+  border-color: #f3c7c2;
+  color: var(--peligro);
+}
+
+.lista {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lista {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Barra inferior fija con el progreso y la acción principal. */
+.barra {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 10px;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--cancha-950);
+  color: #fff;
+  box-shadow: 0 -8px 24px rgb(6 25 15 / 0.2);
+}
+
+@media (min-width: 768px) {
+  .barra {
+    margin-inline: 0;
+    bottom: 16px;
+    border-radius: var(--radio-l);
+  }
+}
+
+.barraInterior {
+  display: grid;
+  gap: 12px;
+  padding-block: 14px;
+}
+
+@media (min-width: 640px) {
+  .barraInterior {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.progreso {
+  display: grid;
+  gap: 8px;
+}
+
+.textoProgreso {
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.textoProgreso strong {
+  margin-left: 4px;
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.pista {
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+  overflow: hidden;
+}
+
+.relleno {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cancha-500);
+  transition: width 0.2s ease;
+}
+
+.rellenoCompleto {
+  background: var(--acento);
+}
+
+.rellenoExcedido {
+  background: #ff8a7a;
+}
+
+.textoExceso {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffb3a8;
+}
+
+.botonArmar {
+  width: 100%;
+  min-height: 52px;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .botonArmar {
+    width: auto;
+    padding: 0 28px;
+  }
+}
+
+.botonArmar:disabled {
+  opacity: 1;
+  background: rgb(255 255 255 / 0.12);
+  color: rgb(255 255 255 / 0.5);
+  box-shadow: none;
+}

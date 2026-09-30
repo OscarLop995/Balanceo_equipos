@@ -1,0 +1,122 @@
+/* Marcador estilo estadio. */
+.marcador {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  margin-top: 22px;
+  max-width: 640px;
+  border-radius: var(--radio-l);
+  overflow: hidden;
+  background: var(--cancha-950);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  box-shadow: var(--sombra-3);
+}
+
+.lado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 8px;
+}
+
+.ladoA {
+  border-top: 4px solid var(--equipo-a);
+}
+
+.ladoB {
+  border-top: 4px solid var(--equipo-b);
+}
+
+.nombreLado {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.puntos {
+  font-size: clamp(1.9rem, 8vw, 2.8rem);
+  line-height: 1;
+  color: #fff;
+}
+
+.centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 14px;
+  background: rgb(255 255 255 / 0.05);
+  border-inline: 1px solid rgb(255 255 255 / 0.1);
+  border-top: 4px solid var(--acento);
+}
+
+.etiquetaDiferencia {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.6);
+}
+
+.diferencia {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--acento);
+}
+
+.textoDiferencia {
+  margin-top: 12px;
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.origen {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: var(--radio-m);
+  background: var(--cancha-50);
+  border: 1px solid var(--cancha-100);
+  color: var(--cancha-700);
+  font-size: 0.9375rem;
+}
+
+.origen svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.equipos {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .equipos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+.acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .acciones {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

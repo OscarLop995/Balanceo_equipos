@@ -1,0 +1,166 @@
+/* ---------- Tabla (escritorio) ---------- */
+
+.contenedorTabla {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .contenedorTabla {
+    display: block;
+    overflow-x: auto;
+    border-radius: var(--radio-l);
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    box-shadow: var(--sombra-1);
+  }
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  background: var(--superficie-2);
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: middle;
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tabla tbody tr:hover {
+  background: var(--cancha-50);
+}
+
+.celdaAccion {
+  text-align: right;
+  width: 1%;
+}
+
+.nombre {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cancha-800);
+  color: var(--acento);
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Tarjetas (tablet y móvil) ---------- */
+
+.tarjetas {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tarjetas {
+    display: none;
+  }
+}
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radio-m);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-1);
+  overflow: hidden;
+}
+
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--cancha-500);
+}
+
+.cuerpoTarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.nombreTarjeta {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.ladoTarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.editarTarjeta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--borde-fuerte);
+  background: var(--superficie);
+  color: var(--tinta);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.editarTarjeta:hover {
+  border-color: var(--cancha-600);
+  background: var(--cancha-50);
+}
+
+.editarTarjeta svg {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,134 @@
+.encabezado {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(255 255 255 / 0.028) 0 64px,
+      transparent 64px 128px
+    ),
+    linear-gradient(160deg, var(--cancha-700) 0%, var(--cancha-900) 70%);
+  margin-bottom: 24px;
+}
+
+/* Líneas de cancha sutiles: círculo central y línea media. */
+.lineas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background:
+    radial-gradient(
+      circle at 88% 50%,
+      transparent 0 94px,
+      #fff 94px 96px,
+      transparent 96px
+    ),
+    radial-gradient(circle at 88% 50%, #fff 0 5px, transparent 6px),
+    linear-gradient(90deg, transparent calc(88% - 1px), #fff calc(88% - 1px) calc(88% + 1px), transparent calc(88% + 1px));
+}
+
+@media (max-width: 639px) {
+  .lineas {
+    opacity: 0.1;
+  }
+}
+
+.interior {
+  position: relative;
+  padding-block: 24px 28px;
+}
+
+@media (min-width: 768px) {
+  .interior {
+    padding-block: 36px 40px;
+  }
+}
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  margin: -8px 0 8px -6px;
+  padding: 0 10px 0 4px;
+  border-radius: 999px;
+  color: rgb(255 255 255 / 0.8);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.volver:hover {
+  color: #fff;
+  background: rgb(255 255 255 / 0.08);
+}
+
+.volver svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .fila {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.textos {
+  min-width: 0;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgb(215 242 74 / 0.16);
+  color: var(--acento);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.titulo {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.subtitulo {
+  margin-top: 8px;
+  max-width: 56ch;
+  color: rgb(255 255 255 / 0.78);
+  font-size: 1rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.acciones > * {
+  flex: 1 1 auto;
+}
+
+@media (min-width: 768px) {
+  .acciones > * {
+    flex: none;
+  }
+}

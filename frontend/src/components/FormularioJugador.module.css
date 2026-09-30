@@ -1,0 +1,240 @@
+.formulario {
+  display: grid;
+  gap: 20px;
+}
+
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radio-m);
+  background: var(--peligro-fondo);
+  border: 1px solid #f3c7c2;
+  color: var(--peligro);
+  font-weight: 500;
+}
+
+.alerta svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.seccion {
+  padding: 18px;
+  border-radius: var(--radio-l);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-1);
+}
+
+.tituloSeccion {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.seccion .tituloSeccion {
+  margin-bottom: 12px;
+}
+
+.campoNombre {
+  display: grid;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.etiqueta {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.entrada {
+  width: 100%;
+  min-height: var(--alto-toque);
+  padding: 0 14px;
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio-m);
+  background: var(--superficie-2);
+  font-size: 1rem;
+}
+
+.entrada:focus {
+  outline: none;
+  border-color: var(--cancha-500);
+  box-shadow: 0 0 0 3px rgb(34 160 97 / 0.2);
+  background: var(--superficie);
+}
+
+.entradaError {
+  border-color: var(--peligro);
+  background: var(--peligro-fondo);
+}
+
+.textoError {
+  color: var(--peligro);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.encabezadoHabilidades {
+  display: grid;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.ayuda {
+  color: var(--tinta-suave);
+  font-size: 0.9375rem;
+}
+
+.categorias {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (min-width: 800px) {
+  .categorias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .categorias {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.categoria {
+  min-width: 0;
+  margin: 0;
+  padding: 6px 18px 8px;
+  border-radius: var(--radio-l);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-1);
+}
+
+.leyenda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  float: left;
+  width: 100%;
+  padding: 12px 0 8px;
+  margin-bottom: 2px;
+  border-bottom: 2px solid var(--cancha-50);
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.leyenda + * {
+  clear: both;
+}
+
+.conteo {
+  margin-left: auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  color: var(--tinta-tenue);
+  font-family: var(--fuente-base);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.cat_fisico,
+.cat_ataque,
+.cat_pase,
+.cat_tecnica,
+.cat_defensa,
+.cat_portero {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.cat_fisico {
+  background: var(--cancha-500);
+}
+
+.cat_ataque {
+  background: var(--pos-delantero);
+}
+
+.cat_pase {
+  background: var(--pos-mediocampista);
+}
+
+.cat_tecnica {
+  background: var(--pos-extremo);
+}
+
+.cat_defensa {
+  background: var(--pos-defensa);
+}
+
+.cat_portero {
+  background: var(--pos-portero);
+}
+
+/* Barra de acciones fija abajo: botones siempre al alcance del pulgar. */
+.barraAcciones {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 8px;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: rgb(255 255 255 / 0.94);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--borde);
+  box-shadow: 0 -6px 20px rgb(11 46 31 / 0.06);
+}
+
+.barraInterior {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-block: 12px;
+}
+
+.resumenErrores {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--peligro);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.resumenErrores svg {
+  width: 18px;
+  height: 18px;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .botones {
+    display: flex;
+    width: auto;
+    margin-left: auto;
+  }
+}

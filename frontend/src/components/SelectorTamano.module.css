@@ -1,0 +1,77 @@
+.selector {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .selector {
+    gap: 12px;
+  }
+}
+
+.opcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 6px;
+  border-radius: var(--radio-m);
+  border: 2px solid rgb(255 255 255 / 0.18);
+  background: rgb(255 255 255 / 0.06);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.opcion:hover {
+  border-color: rgb(255 255 255 / 0.4);
+}
+
+.opcion:has(input:focus-visible) {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+.activa {
+  border-color: var(--acento);
+  background: var(--acento);
+  color: var(--acento-tinta);
+}
+
+.activa:hover {
+  border-color: var(--acento);
+}
+
+.marcador {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: clamp(1.5rem, 6vw, 2.1rem);
+  line-height: 1;
+}
+
+.vs {
+  font-size: 0.55em;
+  font-weight: 600;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.total {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.selector:disabled .opcion {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

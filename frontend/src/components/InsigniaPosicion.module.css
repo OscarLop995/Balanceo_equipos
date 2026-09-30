@@ -1,0 +1,45 @@
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--color);
+  background: var(--fondo-insignia);
+}
+
+.punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.portero {
+  --color: var(--pos-portero);
+  --fondo-insignia: var(--pos-portero-fondo);
+}
+
+.defensa {
+  --color: var(--pos-defensa);
+  --fondo-insignia: var(--pos-defensa-fondo);
+}
+
+.mediocampista {
+  --color: var(--pos-mediocampista);
+  --fondo-insignia: var(--pos-mediocampista-fondo);
+}
+
+.extremo {
+  --color: var(--pos-extremo);
+  --fondo-insignia: var(--pos-extremo-fondo);
+}
+
+.delantero {
+  --color: var(--pos-delantero);
+  --fondo-insignia: var(--pos-delantero-fondo);
+}

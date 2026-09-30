@@ -1,0 +1,109 @@
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radio-l);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra-2);
+  overflow: hidden;
+}
+
+.a {
+  --color-equipo: var(--equipo-a);
+  --fondo-equipo: var(--equipo-a-fondo);
+}
+
+.b {
+  --color-equipo: var(--equipo-b);
+  --fondo-equipo: var(--equipo-b-fondo);
+}
+
+.cabecera {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  color: #fff;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgb(255 255 255 / 0.06) 0 10px,
+      transparent 10px 20px
+    ),
+    var(--color-equipo);
+}
+
+.etiqueta {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cantidad {
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.puntos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.puntos :global(.cifra) {
+  font-size: 2.4rem;
+}
+
+.unidad {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.lista {
+  margin: 0;
+  padding: 6px 12px 12px;
+  list-style: none;
+}
+
+.jugador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.jugador:last-child {
+  border-bottom: 0;
+}
+
+.dorsal {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--fondo-equipo);
+  color: var(--color-equipo);
+  font-size: 1.05rem;
+}
+
+.nombre {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

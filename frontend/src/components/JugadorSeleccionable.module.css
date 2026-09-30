@@ -1,0 +1,79 @@
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 12px 14px;
+  border-radius: var(--radio-m);
+  border: 2px solid var(--borde);
+  background: var(--superficie);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fila:hover {
+  border-color: var(--borde-fuerte);
+}
+
+.fila:has(input:focus-visible) {
+  outline: 3px solid var(--cancha-500);
+  outline-offset: 2px;
+}
+
+.seleccionado {
+  border-color: var(--cancha-600);
+  background: var(--cancha-50);
+}
+
+.seleccionado:hover {
+  border-color: var(--cancha-600);
+}
+
+.deshabilitado {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.casilla {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  border: 2px solid var(--borde-fuerte);
+  background: var(--superficie);
+  color: transparent;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.casilla svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+
+.seleccionado .casilla {
+  border-color: var(--cancha-700);
+  background: var(--cancha-700);
+  color: var(--acento);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.nombre {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

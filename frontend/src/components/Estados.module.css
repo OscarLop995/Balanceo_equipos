@@ -1,0 +1,119 @@
+.spinner {
+  display: inline-flex;
+}
+
+.giro {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cargando {
+  display: grid;
+  gap: 16px;
+}
+
+.mensajeCargando {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tinta-suave);
+  font-weight: 500;
+}
+
+.esqueletos {
+  display: grid;
+  gap: 10px;
+}
+
+.esqueleto {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 16px;
+  border-radius: var(--radio-m);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.bloque {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--borde) 0%,
+    var(--superficie-2) 50%,
+    var(--borde) 100%
+  );
+  background-size: 200% 100%;
+  animation: brillo 1.3s ease-in-out infinite;
+}
+
+@keyframes brillo {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: var(--radio-l);
+  background: var(--superficie);
+  border: 1px dashed var(--borde-fuerte);
+}
+
+.error {
+  border-style: solid;
+  border-color: #f3c7c2;
+  background: var(--peligro-fondo);
+}
+
+.iconoPanel {
+  width: 36px;
+  height: 36px;
+  color: var(--peligro);
+}
+
+.iconoVacio {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--cancha-50);
+  color: var(--cancha-600);
+}
+
+.iconoVacio svg {
+  width: 32px;
+  height: 32px;
+}
+
+.titulo {
+  font-weight: 700;
+  font-size: 1.05rem;
+  max-width: 44ch;
+}
+
+.descripcion {
+  color: var(--tinta-suave);
+  max-width: 44ch;
+  margin-bottom: 8px;
+}

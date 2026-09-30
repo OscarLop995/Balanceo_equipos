@@ -1,0 +1,75 @@
+.cabeceraSeccion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tituloSeccion {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.contador {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--cancha-800);
+  color: var(--acento);
+  font-size: 1rem;
+}
+
+/* ---------- Resumen de solo lectura (edición) ---------- */
+
+.resumen {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--radio-l);
+  background: var(--cancha-900);
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  .resumen {
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+}
+
+.datoResumen {
+  display: grid;
+  gap: 6px;
+}
+
+.etiquetaResumen {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.65);
+}
+
+.resumen :global(.cifra) {
+  color: var(--acento);
+}
+
+.notaResumen {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.7);
+}
+
+@media (min-width: 640px) {
+  .notaResumen {
+    justify-self: end;
+    max-width: 34ch;
+    text-align: right;
+  }
+}
