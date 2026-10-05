@@ -73,22 +73,26 @@ Usaremos el subdominio `app.tudominio.com` para la aplicación.
 
 ## Paso 4 · Configurar Cloudflare Access (código por email)
 
-1. En el panel de Cloudflare entra en **Zero Trust**.
+1. En el panel de Cloudflare entra en **Zero Trust**
+   (o directamente en <https://one.dash.cloudflare.com>).
    - Elige un nombre de equipo → tu dominio de equipo será
-     `nombre.cloudflareaccess.com`.
-   - Selecciona el plan **Free** (hasta 50 usuarios). Cloudflare puede pedir
-     un método de pago aunque el plan sea gratuito.
-2. **Settings → Authentication**: comprueba que **One-time PIN** está
-   disponible (viene activado por defecto).
-3. **Access → Applications → Add an application → Self-hosted**:
+     `nombre.cloudflareaccess.com` (consultable luego en **Settings**).
+   - Selecciona el plan **Free** (hasta 50 usuarios). Cloudflare pide un
+     método de pago aunque el plan sea gratuito; no cobra.
+2. **Integrations → Identity providers → Add new identity provider →
+   One-time PIN**. *Ya no viene activado por defecto.*
+3. **Access controls → Policies → Add a policy**:
+   - Nombre: `Solo yo`. Acción: **Allow**.
+   - Regla Include → selector **Emails** → tu correo.
+4. **Access controls → Applications → Create new application →
+   Self-hosted and private**:
    - Nombre: `Balanceador de Equipos`.
-   - Dominio: `app.tudominio.com`.
-   - Duración de sesión: a tu gusto (p. ej. 1 mes, para no pedir código cada vez).
-4. Crea una **política**:
-   - Acción: **Allow**.
-   - Include → **Emails** → tu correo (añade más si quieres dar acceso a otros).
-5. Guarda. En la ficha de la aplicación copia el
-   **Application Audience (AUD) Tag**.
+   - **Add public hostname**: subdominio `app`, dominio `tudominio.com`.
+   - Añade la política `Solo yo` y, como método de inicio de sesión,
+     **One-time PIN**.
+   - Duración de sesión: a tu gusto (p. ej. 1 mes).
+5. Guarda. En **Applications → Configure** (tu aplicación) →
+   **Additional settings**, copia el **Application Audience (AUD) Tag**.
 
 ## Paso 5 · Variables en Railway
 

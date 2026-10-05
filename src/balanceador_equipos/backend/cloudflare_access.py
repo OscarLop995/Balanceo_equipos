@@ -170,7 +170,13 @@ class MiddlewareCloudflareAccess:
             # La primera vez descarga las claves públicas (E/S bloqueante).
             await run_in_threadpool(self.verificador.verificar, token)
         except jwt.PyJWTError as error:
-            logger.info("Token de Cloudflare Access rechazado: %s", error)
+            # WARNING para que aparezca en los logs de Railway: uvicorn no
+            # configura un handler para los loggers de la aplicación.
+            logger.warning(
+                "Token de Cloudflare Access rechazado (%s): %s",
+                type(error).__name__,
+                error,
+            )
             await PlainTextResponse("Acceso denegado.", status_code=403)(
                 scope, receive, send
             )
