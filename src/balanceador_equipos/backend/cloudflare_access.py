@@ -49,15 +49,60 @@ def leer_configuracion() -> ConfiguracionAccess | None:
     Retorna None si falta alguna variable.
     """
 
-    dominio = os.environ.get(VARIABLE_DOMINIO_EQUIPO, "").strip()
-    audiencia = os.environ.get(VARIABLE_AUDIENCIA, "").strip()
+    # Tolera errores comunes al copiar valores: espacios, comillas,
+    # mayúsculas, el esquema https:// y la barra final.
+    dominio = _limpiar(os.environ.get(VARIABLE_DOMINIO_EQUIPO, "")).lower()
+    audiencia = _limpiar(os.environ.get(VARIABLE_AUDIENCIA, ""))
 
     if not dominio or not audiencia:
         return None
 
-    dominio = dominio.removeprefix("https://").rstrip("/")
+    dominio = dominio.removeprefix("https://").removeprefix("http://")
+    dominio = dominio.rstrip("/")
 
     return ConfiguracionAccess(dominio_equipo=dominio, audiencia=audiencia)
+
+
+def _limpiar(valor: str) -> str:
+    return valor.strip().strip("\"'").strip()
+
+
+def _abreviar(valor: object) -> str:
+    """Muestra solo el inicio y el final de un valor largo."""
+
+    texto = str(valor)
+
+    if len(texto) <= 12:
+        return texto
+
+    return f"{texto[:6]}…{texto[-4:]} ({len(texto)} caracteres)"
+
+
+def describir_discrepancia(
+    token: str,
+    configuracion: ConfiguracionAccess,
+) -> str:
+    """
+    Compara, sin verificar la firma, el emisor y la audiencia del token con
+    la configuración. Solo para diagnóstico en los logs.
+    """
+
+    try:
+        datos = jwt.decode(token, options={"verify_signature": False})
+    except jwt.PyJWTError:
+        return "token ilegible"
+
+    audiencias = datos.get("aud")
+
+    if isinstance(audiencias, str):
+        audiencias = [audiencias]
+
+    return (
+        f"emisor del token={datos.get('iss')!r}, "
+        f"emisor esperado={configuracion.emisor!r}; "
+        f"audiencia del token={[_abreviar(a) for a in audiencias or []]}, "
+        f"audiencia esperada={_abreviar(configuracion.audiencia)}"
+    )
 
 
 class VerificadorAccess:
@@ -173,9 +218,10 @@ class MiddlewareCloudflareAccess:
             # WARNING para que aparezca en los logs de Railway: uvicorn no
             # configura un handler para los loggers de la aplicación.
             logger.warning(
-                "Token de Cloudflare Access rechazado (%s): %s",
+                "Token de Cloudflare Access rechazado (%s): %s | %s",
                 type(error).__name__,
                 error,
+                describir_discrepancia(token, self.verificador.configuracion),
             )
             await PlainTextResponse("Acceso denegado.", status_code=403)(
                 scope, receive, send

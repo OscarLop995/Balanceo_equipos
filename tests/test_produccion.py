@@ -153,6 +153,46 @@ def test_token_invalido_da_403(cliente: TestClient, token: str) -> None:
     assert cliente.get("/", headers=_con_token(token)).status_code == 403
 
 
+@pytest.mark.parametrize(
+    ("dominio", "audiencia"),
+    [
+        (f"https://{DOMINIO}/", AUDIENCIA),
+        (f"  {DOMINIO.upper()}  ", f" {AUDIENCIA} "),
+        (f'"{DOMINIO}"', f"'{AUDIENCIA}'"),
+    ],
+)
+def test_tolera_errores_de_formato_en_las_variables(
+    frontend: Path,
+    access_configurado: None,
+    monkeypatch: pytest.MonkeyPatch,
+    dominio: str,
+    audiencia: str,
+) -> None:
+    monkeypatch.setenv(VARIABLE_DOMINIO_EQUIPO, dominio)
+    monkeypatch.setenv(VARIABLE_AUDIENCIA, audiencia)
+
+    with TestClient(crear_aplicacion()) as cliente:
+        assert cliente.get("/", headers=_con_token()).status_code == 200
+
+
+def test_el_log_explica_la_discrepancia(
+    cliente: TestClient,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    token = crear_token(audiencia="a" * 64)
+
+    with caplog.at_level("WARNING"):
+        respuesta = cliente.get("/", headers=_con_token(token))
+
+    assert respuesta.status_code == 403
+    assert "InvalidAudienceError" in caplog.text
+    assert "aaaaaa…aaaa (64 caracteres)" in caplog.text
+    assert "audiencia esperada=aud-de…ueba (13 caracteres)" in caplog.text
+    assert f"emisor esperado='https://{DOMINIO}'" in caplog.text
+    # El AUD completo nunca se escribe en el log.
+    assert "a" * 64 not in caplog.text
+
+
 # ---------- Servicio de la web y la API ----------
 
 
